@@ -1,0 +1,34 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/product.css">
+<link rel="stylesheet" href="/css/navigation.css">
+<link rel="stylesheet" href="/css/schemes.css"> <!-- Add this line -->
+
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <% if (schemes.length > 0) { %>
+            <table class="scheme-table">
+                <thead>
+                    <tr>
+                        <th>Scheme Name</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% schemes.forEach(scheme => { %>
+                        <tr>
+                            <td><%= scheme.name %></td>
+                            <td><a href="<%= scheme.link %>"><%= scheme.link %></a></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <div class="no-schemes">No Schemes Found!</div>
+        <% } %>
+    </main>
+    <%- include('../includes/end.ejs') %>
+</body>

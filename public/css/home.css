@@ -1,0 +1,52 @@
+/* home.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+.welcome-section {
+    text-align: center;
+    padding: 2rem;
+    background-color: #e6f7ff;
+}
+
+.welcome-section h1 {
+    color: #00529b;
+}
+
+.features-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+    background-color: #d9f2e6;
+}
+
+.features-section .feature {
+    width: 30%;
+    text-align: center;
+    background-color: #f2ffe6;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.weather-widget-section {
+    text-align: center;
+    padding: 2rem;
+    background-color: #fff5e6;
+}
+
+.testimonials-section {
+    padding: 2rem;
+    background-color: #f9f9f9;
+}
+
+.testimonials-section .testimonial {
+    margin-bottom: 1rem;
+    background-color: #fff;
+    padding: 1rem;
+    border-left: 5px solid #00529b;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
