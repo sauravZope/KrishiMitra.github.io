@@ -1,0 +1,64 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Main table styling */
+.scheme-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.scheme-table th, 
+.scheme-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Table header styling */
+.scheme-table th {
+    background-color: #f4f4f4;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Table row styling */
+.scheme-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.scheme-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Link styling */
+.scheme-table a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.scheme-table a:hover {
+    text-decoration: underline;
+}
+
+/* No schemes message */
+.no-schemes {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+    color: #999;
+}

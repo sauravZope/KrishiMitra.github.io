@@ -1,0 +1,76 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/product.css">
+<link rel="stylesheet" href="/css/home.css"> 
+<link rel="stylesheet" href="/css/navigation.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <h1>Welcome to KrishiMitra</h1>
+            <p>Your all-in-one solution for farming needs. Buy and sell products, get information about government schemes, and access crop predictions based on weather.</p>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="feature">
+                <h2>Buy and Sell Products</h2>
+                <p>Easily buy and sell farming products with a few clicks.</p>
+            </div>
+            <div class="feature">
+                <h2>Government Schemes</h2>
+                <p>Stay updated with the latest government schemes and benefits for farmers.</p>
+            </div>
+            <div class="feature">
+                <h2>Crop Predictions</h2>
+                <p>Get accurate crop predictions based on the latest weather data.</p>
+            </div>
+        </section>
+
+      
+        <!-- Products Section -->
+        <% if (prods.length > 0) { %>
+            <div class="grid">
+                <h2 class="feature">Trending Products</h2>
+                <% for (let i = 0; i < Math.min(prods.length, 3); i++) { %>
+                    <article class="card product-item">
+                        <header class="card__header">
+                            <h1 class="product__title"><%= prods[i].title %></h1>
+                        </header>
+                        <div class="card__image">
+                            <img src="<%= prods[i].imageUrl %>" alt="<%= prods[i].title %>">
+                        </div>
+                        <div class="card__content">
+                            <h2 class="product__price">Rs <%= prods[i].price %></h2>
+                            <p class="product__description"><%= prods[i].description %></p>
+                        </div>
+                        <div class="card__actions">
+                            <a href="/products/<%= prods[i]._id %>" class="btn">Details</a>
+                            <% if (isAuthenticated) { %>
+                                <%- include('../includes/add-to-cart.ejs', {product: prods[i]}) %>
+                            <% } %>
+                        </div>
+                    </article>
+                <% } %>
+            </div>
+        <% } else { %>
+            <h1>No Products Found!</h1>
+        <% } %>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <h2>What Our Farmers Say</h2>
+            <div class="testimonial">
+                <p>"KrishiMitra has transformed the way I manage my farm. The crop predictions are incredibly accurate!" - Farmer A</p>
+            </div>
+            <div class="testimonial">
+                <p>"The platform is easy to use and has helped me connect with buyers directly." - Farmer B</p>
+            </div>
+        </section>
+    </main>
+
+    <%- include('../includes/end.ejs') %>
+</body>
