@@ -26,6 +26,7 @@ const shopRoutes = require('./routes/shop');
 const govSchemeRoutes=require("./routes/govSchemeRoutes")
 const authRoutes = require('./routes/auth');
 const GeminiApiCallRoute=require("./routes/GeminiApiCallRoute");
+const qaRoutes = require('./routes/qa');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -62,6 +63,7 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 app.use(govSchemeRoutes);
 app.use(GeminiApiCallRoute);
+app.use('/qa', qaRoutes);
 app.use(authRoutes);
 app.use(errorController.get404);
 

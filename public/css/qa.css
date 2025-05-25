@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.search-container {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #27ae60;
+}
+
+.no-results {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #666;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.no-results.hidden {
+    display: none;
+}
+
+.ask-question-container {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#askQuestionBtn {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#askQuestionBtn:hover {
+    background-color: #219a52;
+}
+
+.question-form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.question-form-container.hidden {
+    display: none;
+}
+
+.question-form-container h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+#questionForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.btn-primary {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #219a52;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+.question-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.question-text {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.answers-list {
+    margin-top: 20px;
+    padding-left: 20px;
+}
+
+.answer-card {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.answer-content {
+    flex-grow: 1;
+}
+
+.upvote-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+}
+
+.upvote-btn:hover {
+    color: #27ae60;
+}
+
+.upvote-count {
+    font-weight: 500;
+}
+
+.answer-form {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.answer-form textarea {
+    flex-grow: 1;
+    min-height: 80px;
+}
+
+/* Override navigation styles */
+.main-header {
+    border-radius: 0 !important;
+    background-color: #00529b !important;
+    padding: 1rem 2rem !important;
+}
+
+.main-header__brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.main-header__logo {
+    height: 40px;
+    margin-right: 1rem;
+}
+
+.main-header__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+}
+
+.main-header__nav {
+    margin-left: auto;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .answer-card {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .upvote-btn {
+        flex-direction: row;
+    }
+
+    .answer-form {
+        flex-direction: column;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+} 
