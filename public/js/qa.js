@@ -2,6 +2,7 @@
 const STORAGE_KEY = 'farmerQA';
 let questions = [];
 let filteredQuestions = [];
+let visibleAnswers = new Set(); // Track which answers are visible
 
 // Load initial data
 function loadData() {
@@ -133,10 +134,14 @@ function renderQuestions() {
         
         // Sort answers by upvotes
         const sortedAnswers = [...question.answers].sort((a, b) => b.upvotes - a.upvotes);
+        const isVisible = visibleAnswers.has(question.id);
 
         questionCard.innerHTML = `
             <div class="question-text">${question.text}</div>
-            <div class="answers-list">
+            <button class="show-answers-btn" onclick="toggleAnswers(${question.id})">
+                ${isVisible ? 'Hide Other Answers' : `Show Other Answers (${question.answers.length})`}
+            </button>
+            <div class="answers-list ${isVisible ? '' : 'hidden'}" id="answers-${question.id}">
                 ${sortedAnswers.map(answer => `
                     <div class="answer-card">
                         <button class="upvote-btn" onclick="upvoteAnswer(${question.id}, ${answer.id})">
@@ -155,6 +160,22 @@ function renderQuestions() {
 
         questionsList.appendChild(questionCard);
     });
+}
+
+// Add new function to toggle answers visibility
+function toggleAnswers(questionId) {
+    const answersList = document.getElementById(`answers-${questionId}`);
+    const showAnswersBtn = answersList.previousElementSibling;
+    
+    if (answersList.classList.contains('hidden')) {
+        answersList.classList.remove('hidden');
+        showAnswersBtn.textContent = 'Hide Other Answers';
+        visibleAnswers.add(questionId);
+    } else {
+        answersList.classList.add('hidden');
+        showAnswersBtn.textContent = `Show Other Answers (${questions.find(q => q.id === questionId).answers.length})`;
+        visibleAnswers.delete(questionId);
+    }
 }
 
 // Event Listeners
