@@ -1,184 +1,35 @@
 <%- include('../includes/head.ejs') %>
-<link rel="stylesheet" href="/css/product.css">
-<link rel="stylesheet" href="/css/navigation.css">
-<link rel="stylesheet" href="/css/schemes.css"> <!-- Add this line -->
+<link rel="stylesheet" href="/css/schemes.css">
 
 </head>
 
-<body style="background-color: #f8f9fa; font-family: Arial, sans-serif;">
-
-    <!-- Cover Page -->
-    <div style="text-align: center; padding: 40px; background-color: #ff9f00; color: white;">
-        <h1 style="font-size: 36px; margin-bottom: 10px;">Government Schemes for Farmers</h1>
-        <p style="font-size: 20px;">Your One-stop Solution for Updated Schemes & Resources</p>
-    </div>
-
+<body>
     <%- include('../includes/navigation.ejs') %>
 
-    <main style="padding: 20px;">
-        <% if (schemes.length > 0) { %>
-            <table class="scheme-table" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-                <thead style="background-color: #4CAF50; color: white;">
-                    <tr>
-                        <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">Scheme Name</th>
-                        <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">Link</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% schemes.forEach(scheme => { %>
-                        <tr style="background-color: #f2f2f2;">
-                            <td style="padding: 12px; border: 1px solid #ddd;"><%= scheme.name %></td>
-                            <td style="padding: 12px; border: 1px solid #ddd;">
-                                <a href="<%= scheme.link %>" style="color: #ff9f00; text-decoration: none;">Visit Link</a>
-                            </td>
+    <main>
+        <div class="schemes-container">
+            <h1>Government Schemes for Farmers</h1>
+            <% if (schemes.length > 0) { %>
+                <table class="scheme-table">
+                    <thead>
+                        <tr>
+                            <th>Scheme Name</th>
+                            <th>Description</th>
                         </tr>
-                    <% }); %>
-                </tbody>
-            </table>
-        <% } else { %>
-            <div class="no-schemes" style="margin-top: 20px; padding: 20px; background-color: #ffe4b5; border-radius: 8px;">
-                <table style="width: 100%; border-collapse: collapse;">
-                   
-                        <td style="padding: 12px; text-align: center; font-size: 18px; background-color: #ff9f00; color: white; font-weight: bold;">
-                            ** Central Sector Schemes **
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>1. Pradhan Mantri Krishi Sinchai Yojana (PMKSY)</strong><br>
-                            PMKSY aims to ensure access to protective irrigation for all agricultural farms in the country, improving water use efficiency and expanding cultivable areas under irrigation.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>2. Interest Subvention for Dairy Sector</strong><br>
-                            This scheme provides interest subvention on working capital loans for the dairy sector, especially due to the lockdown, ensuring financial support for dairy farmers.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>3. Group Accident Insurance Scheme for Fishermen</strong><br>
-                            Implemented under the Pradhan Mantri Matsya Sampada Yojana, this scheme offers accident insurance coverage for fishermen, ensuring financial security against unforeseen incidents.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>4. National Scheme of Welfare of Fishermen</strong><br>
-                            This scheme provides financial assistance for housing, insurance, and livelihood support to improve the welfare of fishermen and their dependents.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>5. Krishi UDAN Scheme</strong><br>
-                            Krishi UDAN 2.0 focuses on 53 airports, primarily in Northeast and tribal regions, to improve transportation and logistics for farmers, freight forwarders, and airlines.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>6. Agriculture Infrastructure Fund (AIF)</strong><br>
-                            AIF is a pan-India Central Sector Scheme providing debt financing facilities for investment in agricultural infrastructure to strengthen supply chains and storage.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>7. KCC for Animal Husbandry and Fisheries</strong><br>
-                            The Kisan Credit Card (KCC) scheme has been extended to cover farmers engaged in animal husbandry and fisheries, ensuring easy access to institutional credit.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>8. Crop Insurance Schemes</strong><br>
-                            This scheme safeguards farmers from financial losses due to non-preventable natural risks, providing comprehensive risk cover for various crops.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>9. Credit Facility for Farmers</strong><br>
-                            Institutional credit is provided to farmers to meet their financial requirements for agricultural and allied activities, ensuring their economic stability.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>10. Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)</strong><br>
-                            An income support scheme providing ₹6,000 per year in three equal installments directly to farmers' bank accounts through Direct Benefit Transfer (DBT).
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>11. Primary Agricultural Credit Societies (PACS)</strong><br>
-                            A scheme under the Ministry of Cooperation to strengthen cooperative movements and expand their reach to the grassroots level.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>12. Vibrant Villages Programme</strong><br>
-                            A Centrally Sponsored Scheme for the comprehensive development of villages in border regions, with a financial allocation of ₹4,800 crore from 2022-23 to 2025-26.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>13. Mission Amrit Sarovar</strong><br>
-                            A mission to develop at least 75 Amrit Sarovars (ponds) in every district of the country, enhancing water conservation efforts.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>14. National Beekeeping and Honey Mission (NBHM)</strong><br>
-                            A scheme to promote scientific beekeeping, enhance honey production, and provide livelihood opportunities in the apiculture sector.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>15. Unique Package for Farmers</strong><br>
-                            A bouquet of schemes aimed at boosting farmers’ well-being, rejuvenating soil productivity, ensuring food security, and promoting environmental sustainability.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>16. Financial Assistance to Organic Farmers</strong><br>
-                            A scheme providing financial support to farmers practicing organic farming to promote sustainable agricultural practices.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>17. National Mission on Edible Oils – Oil Palm</strong><br>
-                            A mission to promote the cultivation of oil palm to reduce India’s dependency on edible oil imports and increase domestic production.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>18. PM Kisan Maan Dhan Yojana</strong><br>
-                            A contributory pension scheme providing social security to small and marginal farmers after they attain the age of 60.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>19. Tea Development & Promotion Scheme</strong><br>
-                            A scheme for the promotion, development, and expansion of the tea industry in India, benefiting tea growers and producers.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>20. Animal Husbandry Infrastructure Development Fund</strong><br>
-                            A fund providing financial assistance for developing infrastructure in the animal husbandry sector, supporting dairy and livestock entrepreneurs.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; text-align: left; font-size: 16px;">
-                            <strong>21. National Mission on Natural Farming</strong><br>
-                            A scheme promoting sustainable and chemical-free natural farming practices to improve soil health and boost productivity.
-                        </td>
-                    </tr>
-                    
+                    </thead>
+                    <tbody>
+                        <% for (let scheme of schemes) { %>
+                            <tr>
+                                <td><%= scheme.name %></td>
+                                <td><%= scheme.description %></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
                 </table>
-            </div>
-        <% } %>
+            <% } else { %>
+                <p class="no-schemes">No schemes available at the moment.</p>
+            <% } %>
+        </div>
     </main>
-
-    <!-- Footer -->
-    <footer style="background-color: #4CAF50; color: white; padding: 20px; text-align: center;">
-        <p>&copy; 2024 KrishiMitra. All Rights Reserved.</p>
-    </footer>
-
+    <%- include('../includes/end.ejs') %>
 </body>
-</html>
