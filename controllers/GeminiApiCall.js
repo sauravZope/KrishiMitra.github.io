@@ -7,17 +7,29 @@ async function GeminiApiCall(req, res) {
     const location = req.body.location;
 
     try {
-        // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
+       
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-        // Generate the prompt dynamically based on the location
-        const prompt = `What is the best crop to plant in ${location}?`;
+        
+        const prompt = `Generate a JSON-formatted list of five commonly grown crops in ${location}. 
+        Each crop entry should include the crop name, 
+        a brief explanation of why it is suitable for the region, and 
+        relevant factors such as climate adaptability, soil requirements, and economic significance. 
+        Ensure the output is in clean and properly structured JSON format without additional text or explanations.`;
 
+        
         // Send the prompt to the AI model
         const result = await model.generateContent([prompt]);
         const response = await result.response;
         const text = response.text();
 
+     
+        let final = text.slice(7, -5).trim();
+        
+        let jsonData=JSON.parse(final);
+        console.log(jsonData);
+
+        console.log(text,final);
         // Render the EJS template with the AI response
         res.render('geminiApi/geminiApi', { response: text ,path:'/location-crop-predict',
             pageTitle: 'Predict Crop'});

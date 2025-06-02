@@ -11,7 +11,7 @@ exports.govSchemeControl = (req, res, next) => {
             $('#texttospeak a.folderfile_name').each((index, element) => {
                 const schemeName = $(element).text().trim();
                 const schemeLink = $(element).attr('href');
-                schemes.push({ name: schemeName, link: "https://vikaspedia.in" + schemeLink });
+                schemes.push({ name: schemeName, link: "https://en.vikaspedia.in/viewcontent/schemesall/schemes-for-farmers" + schemeLink });
             });
 
             // Render the EJS template with the schemes array
