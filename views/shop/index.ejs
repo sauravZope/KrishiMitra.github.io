@@ -46,6 +46,9 @@
                         <div class="card__content">
                             <h2 class="product__price">₹ <%= prods[i].price %></h2>
                             <p class="product__description"><%= prods[i].description %></p>
+                            <% if (prods[i].description.length > 100) { %>
+                                <button class="view-description-btn" onclick="showDescription('<%= prods[i].title %>', '<%= prods[i].description %>')">View Full Description</button>
+                            <% } %>
                         </div>
                         <div class="card__actions">
                             <a href="/products/<%= prods[i]._id %>" class="btn">Details</a>
@@ -73,4 +76,49 @@
     </main>
 
     <%- include('../includes/end.ejs') %>
+
+    <!-- Add this at the end of the body tag -->
+    <div class="modal" id="descriptionModal">
+        <div class="modal__content">
+            <button class="modal__close" onclick="closeModal()">&times;</button>
+            <div class="modal__header">
+                <h3 class="modal__title" id="modalTitle"></h3>
+            </div>
+            <p class="modal__description" id="modalDescription"></p>
+        </div>
+    </div>
+
+    <script>
+    function showDescription(title, description) {
+        const modal = document.getElementById('descriptionModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        
+        modalTitle.textContent = title;
+        modalDescription.textContent = description;
+        
+        modal.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('descriptionModal');
+        modal.classList.remove('visible');
+        document.body.style.overflow = '';
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('descriptionModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+    </script>
 </body>
