@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Q&A - KrishiMitra</title>
+    <link rel="stylesheet" href="css/qa.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Farmer Q&A</h1>
+            <p>Ask questions and get answers from the farming community</p>
+        </header>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search questions...">
+        </div>
+
+        <div class="ask-question-container">
+            <button id="askQuestionBtn" class="btn-primary">Ask a New Question</button>
+        </div>
+
+        <div id="questionFormContainer" class="hidden">
+            <form id="questionForm">
+                <div class="form-group">
+                    <label for="questionText">Your Question</label>
+                    <textarea id="questionText" placeholder="Type your question here..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="questionTags">Tags</label>
+                    <div class="tags-input-container">
+                        <div id="tagsContainer"></div>
+                        <input type="text" id="questionTags" class="tags-input" placeholder="Add tags (press Enter or comma)">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Post Question</button>
+                    <button type="button" id="cancelQuestionBtn" class="btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="questionsList"></div>
+
+        <div id="noResultsMessage" class="no-results hidden">
+            <p>No questions found matching your search.</p>
+        </div>
+    </div>
+
+    <script src="js/qa.js"></script>
+</body>
+</html> 
