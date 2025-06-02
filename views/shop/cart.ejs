@@ -6,28 +6,61 @@
     <body>
         <%- include('../includes/navigation.ejs') %>
         <main>
-            <% if (products.length > 0) { %>
-                <ul class="cart__item-list">
-                    <% products.forEach(p => { %>
-                        <li class="cart__item">
-                            <h1><%= p.productId.title %></h1>
-                            <h2>Quantity: <%= p.quantity %></h2>
-                            <form action="/cart-delete-item" method="POST">
-                                <input type="hidden" value="<%= p.productId._id %>" name="productId">
-                              <button class="btn danger" type="submit">Delete</button>
-                            </form>
-                        </li>
-                    <% }) %>
-                </ul>
-                <hr>
-                <div class="centered">
-                    <form action="/create-order" method="POST">
-                      <button type="submit" class="btn">Order Now!</button>
-                    </form>
+            <div class="cart-container">
+                <div class="cart-header">
+                    <h1>Your Shopping Cart</h1>
+                    <p>Review your items and proceed to checkout</p>
                 </div>
-                
-            <% } else { %>
-                <h1>No Products in Cart!</h1>
-            <% } %>
+
+                <% if (products.length > 0) { %>
+                    <div class="cart-items">
+                        <% let totalPrice = 0; %>
+                        <% products.forEach(p => { %>
+                            <% totalPrice += p.productId.price * p.quantity; %>
+                            <div class="cart-item">
+                                <div class="cart-item__image">
+                                    <img src="<%= p.productId.imageUrl %>" alt="<%= p.productId.title %>">
+                                </div>
+                                <div class="cart-item__content">
+                                    <h2 class="cart-item__title"><%= p.productId.title %></h2>
+                                    <p class="cart-item__price">₹ <%= p.productId.price %></p>
+                                    <div class="cart-item__quantity">
+                                        Quantity: <span><%= p.quantity %></span>
+                                    </div>
+                                </div>
+                                <div class="cart-item__actions">
+                                    <form action="/cart-delete-item" method="POST">
+                                        <input type="hidden" value="<%= p.productId._id %>" name="productId">
+                                        <button type="submit" class="cart-item__delete" title="Remove item">
+                                            <i class="fas fa-trash"></i> Remove
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        <% }); %>
+                    </div>
+
+                    <div class="cart-summary">
+                        <h2 class="cart-summary__header">Order Summary</h2>
+                        <div class="cart-summary__total">
+                            <span>Total Amount:</span>
+                            <span>₹ <%= totalPrice.toFixed(2) %></span>
+                        </div>
+                        <div class="cart-summary__actions">
+                            <form action="/create-order" method="POST">
+                                <button type="submit" class="cart-summary__checkout">Proceed to Checkout</button>
+                            </form>
+                            <a href="/products" class="cart-summary__continue">Continue Shopping</a>
+                        </div>
+                    </div>
+                <% } else { %>
+                    <div class="empty-cart">
+                        <h1>Your Cart is Empty</h1>
+                        <p>Looks like you haven't added any products to your cart yet.</p>
+                        <a href="/products" class="empty-cart__button">Start Shopping</a>
+                    </div>
+                <% } %>
+            </div>
         </main>
         <%- include('../includes/end.ejs') %>
+    </body>

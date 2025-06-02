@@ -1,25 +1,64 @@
 <%- include('../includes/head.ejs') %>
 <link rel="stylesheet" href="/css/navigation.css">
-<link rel="stylesheet" href="/css/form.css">
-<link rel="stylesheet" href="/css/response.css">
+<link rel="stylesheet" href="/css/predict-crop.css">
+<!-- <link rel="stylesheet" href="/css/response.css"> -->
 </head>
 <body>
     <%- include('../includes/navigation.ejs') %>
     <main>
-        <h1>Crop Prediction Based on Location</h1>
-        <form id="location-form" action="/location-crop-predict" method="POST">
-            <div class="form-group">
-                <label for="location">Enter Location:</label>
-                <input type="text" id="location" name="location" required>
+        <div class="predict-crop-container">
+            <div class="predict-crop-header">
+                <h1>Crop Prediction Based on Location</h1>
+                <p>Enter your location to get personalized crop recommendations based on climate, soil conditions, and economic factors.</p>
             </div>
-            <button type="submit" class="btn">Submit</button>
-        </form>
-        <% if (response) { %>
-            <div class="response">
-                <h2>Recommended Crop</h2>
-                <p><%= response %></p>
-            </div>
-        <% } %>
+
+            <form id="location-form" class="location-form" action="/location-crop-predict" method="POST">
+                <div class="form-group">
+                    <label for="location">Enter Location:</label>
+                    <input type="text" id="location" name="location" placeholder="e.g., Jalandhar" required>
+                </div>
+                <button type="submit" class="submit-btn">Get Crop Recommendations</button>
+            </form>
+
+            <% if (response) { %>
+                <div class="crops-grid">
+                    <% try { %>
+                        <% const crops = JSON.parse(response); %>
+                        <% crops.forEach(crop => { %>
+                            <div class="crop-card">
+                                <div class="crop-header">
+                                    <h2><%= crop.crop %></h2>
+                                </div>
+                                <div class="crop-content">
+                                    <div class="suitability">
+                                        <h3>Suitability</h3>
+                                        <p><%= crop.suitability %></p>
+                                    </div>
+                                    <div class="factors">
+                                        <div class="factor">
+                                            <h4>Climate Requirements</h4>
+                                            <p><%= crop.factors.climate %></p>
+                                        </div>
+                                        <div class="factor">
+                                            <h4>Soil Requirements</h4>
+                                            <p><%= crop.factors.soil %></p>
+                                        </div>
+                                        <div class="factor">
+                                            <h4>Economic Significance</h4>
+                                            <p><%= crop.factors.economic %></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }); %>
+                    <% } catch (error) { %>
+                        <div class="error-message">
+                            <p>Error processing crop recommendations. Please try again.</p>
+                        </div>
+                    <% } %>
+                </div>
+            <% } %>
+        </div>
     </main>
     <%- include('../includes/end.ejs') %>
 </body>

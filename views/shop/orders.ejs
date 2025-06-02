@@ -1,27 +1,53 @@
 <%- include('../includes/head.ejs') %>
     <link rel="stylesheet" href="/css/orders.css">
     <link rel="stylesheet" href="/css/navigation.css">
+</head>
 
-    </head>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <div class="orders-container">
+            <div class="orders-header">
+                <h1>Your Orders</h1>
+                <p>Track and manage your order history</p>
+            </div>
 
-    <body>
-        <%- include('../includes/navigation.ejs') %>
-        <main>
             <% if (orders.length <= 0) { %>
-                <h1>Nothing there!</h1>
+                <div class="empty-orders">
+                    <h1>No Orders Yet</h1>
+                    <p>You haven't placed any orders yet. Start shopping to see your orders here.</p>
+                    <a href="/products" class="empty-orders__button">Start Shopping</a>
+                </div>
             <% } else { %>
-                <ul class="orders">
+                <div class="orders">
                     <% orders.forEach(order => { %>
-                        <li class="orders__item">
-                            <h1>Order - # <%= order._id %></h1>
-                            <ul class="orders__products">
+                        <div class="order-card">
+                            <div class="order-header">
+                                <h2>Order <%= order._id %></h2>
+                            </div>
+                            <div class="order-products">
                                 <% order.products.forEach(p => { %>
-                                    <li class="orders__products-item"><%= p.product.title %> (<%= p.quantity %>)</li>
+                                    <div class="order-product">
+                                        <div class="order-product__image">
+                                            <img src="<%= p.product.imageUrl %>" alt="<%= p.product.title %>">
+                                        </div>
+                                        <div class="order-product__details">
+                                            <h3 class="order-product__title"><%= p.product.title %></h3>
+                                            <div class="order-product__quantity">
+                                                Quantity: <span><%= p.quantity %></span>
+                                            </div>
+                                        </div>
+                                        <div class="order-product__price">
+                                            ₹ <%= p.product.price * p.quantity %>
+                                        </div>
+                                    </div>
                                 <% }); %>
-                            </ul>
-                        </li>
+                            </div>
+                        </div>
                     <% }); %>
-                </ul>
+                </div>
             <% } %>
-        </main>
-        <%- include('../includes/end.ejs') %>
+        </div>
+    </main>
+    <%- include('../includes/end.ejs') %>
+</body>

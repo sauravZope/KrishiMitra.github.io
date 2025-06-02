@@ -13,11 +13,13 @@
             <li class="main-header__item">
                 <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
             </li>
-            <li class="main-header__item">
-                <a class="<%= path === '/orders' ? 'active' : '' %>" href="/govScheme">Gov-Farmer-Scheme</a>
-            </li>
-            <li class="main-header__item">
-                <a class="<%= path === '/orders' ? 'active' : '' %>" href="/location-crop-predict">Predict Crop</a>
+            <li class="main-header__item dropdown">
+                <a href="#" class="dropdown-toggle">Tools</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/govScheme">Gov-Farmer-Scheme</a></li>
+                    <li><a href="/location-crop-predict">Predict Crop</a></li>
+                    <li><a href="http://127.0.0.1:5000" target="_blank">Predict Disease</a></li>
+                </ul>
             </li>
             <li class="main-header__item">
                 <a class="<%= path === '/qa' ? 'active' : '' %>" href="/qa">Q&A Forum</a>
@@ -56,6 +58,25 @@
     </nav>
 </header>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdown = document.querySelector('.dropdown');
+        
+        dropdownToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    });
+</script>
+
 <nav class="mobile-nav">
     <ul class="mobile-nav__item-list">
         <li class="mobile-nav__item">
@@ -69,6 +90,9 @@
         </li>
         <li class="mobile-nav__item">
             <a class="<%= path === '/location-crop-predict' ? 'active' : '' %>" href="/location-crop-predict">Predict Crop</a>
+        </li>
+        <li class="mobile-nav__item">
+            <a href="http://127.0.0.1:5000" target="_blank">Predict Disease</a>
         </li>
         <li class="mobile-nav__item">
             <a class="<%= path === '/qa' ? 'active' : '' %>" href="/qa">Q&A Forum</a>

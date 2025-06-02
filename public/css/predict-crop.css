@@ -1,0 +1,171 @@
+.predict-crop-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.predict-crop-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.predict-crop-header h1 {
+    color: #00529b;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.predict-crop-header p {
+    color: #666;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.location-form {
+    max-width: 500px;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #00529b;
+    box-shadow: 0 0 0 2px rgba(0, 82, 155, 0.1);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: #00529b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #003d73;
+}
+
+.crops-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.crop-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.crop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.crop-header {
+    padding: 1.5rem;
+    background: #00529b;
+    color: white;
+}
+
+.crop-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.crop-content {
+    padding: 1.5rem;
+}
+
+.suitability {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.suitability h3 {
+    color: #00529b;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.suitability p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.factors {
+    display: grid;
+    gap: 1rem;
+}
+
+.factor {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.factor h4 {
+    color: #00529b;
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.factor p {
+    color: #666;
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .predict-crop-container {
+        padding: 1rem;
+    }
+
+    .predict-crop-header h1 {
+        font-size: 2rem;
+    }
+
+    .crops-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .location-form {
+        padding: 1.5rem;
+    }
+} 
