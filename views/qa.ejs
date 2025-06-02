@@ -1,0 +1,43 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/navigation.css">
+<link rel="stylesheet" href="/css/qa.css">
+</head>
+
+<body>
+    <%- include('includes/navigation.ejs') %>
+
+    <main>
+        <div class="container">
+            <header>
+                <h1>Farmer's Q&A</h1>
+                <p>Ask questions and get answers from the farming community</p>
+            </header>
+
+            <div class="ask-question-container">
+                <button id="askQuestionBtn" class="btn-primary">Ask a New Question</button>
+                <div id="questionFormContainer" class="question-form-container hidden">
+                    <h2>Ask a Question</h2>
+                    <form id="questionForm">
+                        <textarea id="questionText" placeholder="Type your question here..." required></textarea>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Submit Question</button>
+                            <button type="button" id="cancelQuestionBtn" class="btn-secondary">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search questions..." class="search-input">
+                <div id="noResultsMessage" class="no-results hidden">No questions found matching your search.</div>
+            </div>
+
+            <section class="questions-list" id="questionsList">
+                <!-- Questions will be dynamically inserted here -->
+            </section>
+        </div>
+    </main>
+
+    <script src="/js/qa.js"></script>
+<%- include('includes/end.ejs') %> 

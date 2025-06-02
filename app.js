@@ -1,11 +1,10 @@
-const path = require('path'); // Provides utilities to work with file and directory paths.
-const express = require('express'); // Imports the Express framework to simplify server setup and routing.
-const bodyParser = require('body-parser'); // Parses incoming request bodies, allowing access to form data.
-const mongoose = require('mongoose'); // Connects to and manages MongoDB databases using an object data modeling (ODM) library.
-const session = require('express-session'); // Manages user sessions, tracking data across requests.
-const MongoDBStore = require('connect-mongodb-session')(session); // Stores sessions in MongoDB for persistence.
-const flash = require('connect-flash'); // Provides a way to display temporary messages (e.g., success or error messages) to users.
-
+const path = require('path');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
+const flash = require('connect-flash');
 
 const errorController = require('./controllers/error');
 const User = require('./models/user');
@@ -19,7 +18,6 @@ const store = new MongoDBStore({
 });
 
 
-
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
@@ -28,6 +26,7 @@ const shopRoutes = require('./routes/shop');
 const govSchemeRoutes=require("./routes/govSchemeRoutes")
 const authRoutes = require('./routes/auth');
 const GeminiApiCallRoute=require("./routes/GeminiApiCallRoute");
+const qaRoutes = require('./routes/qa');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -56,8 +55,6 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
-  
-// creating the local var , sync with req.session 's isloggedIn.
   res.locals.isAuthenticated = req.session.isLoggedIn;
   next();
 });
@@ -66,6 +63,7 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 app.use(govSchemeRoutes);
 app.use(GeminiApiCallRoute);
+app.use('/qa', qaRoutes);
 app.use(authRoutes);
 app.use(errorController.get404);
 

@@ -19,6 +19,9 @@
             <li class="main-header__item">
                 <a class="<%= path === '/orders' ? 'active' : '' %>" href="/location-crop-predict">Predict Crop</a>
             </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/qa' ? 'active' : '' %>" href="/qa">Q&A Forum</a>
+            </li>
             <% if (isAuthenticated) { %>
                 <li class="main-header__item">
                     <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">Cart</a>
@@ -60,6 +63,15 @@
         </li>
         <li class="mobile-nav__item">
             <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
+        </li>
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/govScheme' ? 'active' : '' %>" href="/govScheme">Gov-Farmer-Scheme</a>
+        </li>
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/location-crop-predict' ? 'active' : '' %>" href="/location-crop-predict">Predict Crop</a>
+        </li>
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/qa' ? 'active' : '' %>" href="/qa">Q&A Forum</a>
         </li>
         <% if (isAuthenticated) { %>
             <li class="mobile-nav__item">
